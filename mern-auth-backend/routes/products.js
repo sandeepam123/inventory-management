@@ -1,13 +1,13 @@
 const router = require('express').Router();
 const Product = require('../models/Product');
 
-// Get all products
+
 router.get('/', async (req, res) => {
   const products = await Product.find({});
   res.json(products);
 });
 
-// Add product
+
 router.post('/', async (req, res) => {
   try {
     const prod = await Product.create(req.body);
@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Update product
+
 router.put('/:id', async (req, res) => {
   try {
     const prod = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -27,7 +27,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// Delete product
+
 router.delete('/:id', async (req, res) => {
   try {
     await Product.findByIdAndDelete(req.params.id);

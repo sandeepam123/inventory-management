@@ -1,13 +1,13 @@
 const router = require('express').Router();
 const Category = require('../models/Category');
 
-// Get all categories
+
 router.get('/', async (req, res) => {
   const categories = await Category.find({});
   res.json(categories);
 });
 
-// Add new category
+
 router.post('/', async (req, res) => {
   const { name } = req.body;
   try {
@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Update category
+
 router.put('/:id', async (req, res) => {
   const { name } = req.body;
   try {
@@ -29,7 +29,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// Delete category
+
 router.delete('/:id', async (req, res) => {
   try {
     await Category.findByIdAndDelete(req.params.id);

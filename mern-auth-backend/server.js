@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const authRoutes = require('./routes/auth'); // adapt this path!
+const authRoutes = require('./routes/auth');
 const categoryRoutes = require('./routes/categories');
 const productRoutes = require('./routes/products');
 const customerRoutes = require('./routes/customers');
@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// Use one database for both auth and categories
+
 mongoose.connect('mongodb://127.0.0.1:27017/agriStore').then(() =>
   console.log('MongoDB Connected')
 );

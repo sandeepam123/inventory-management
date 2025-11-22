@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const Order = require('../models/Order');
 
-// GET all orders with populated product/customer names
+
 router.get('/', async (req, res) => {
   const orders = await Order.find({})
     .populate('product', 'name')
@@ -9,14 +9,14 @@ router.get('/', async (req, res) => {
   res.json(orders);
 });
 
-// CREATE a new order
+
 router.post('/', async (req, res) => {
-  console.log('Order POST body:', req.body); // DEBUG: See backend logs
+  console.log('Order POST body:', req.body); 
   try {
     const billNumber = Math.random().toString(36).substring(2, 8).toUpperCase();
     const { product, customer, quantity, price } = req.body;
 
-    // Validate
+  
     if (!product || !customer) return res.status(400).json({ error: 'Select product and customer' });
     if (!Number(quantity) || !Number(price))
       return res.status(400).json({ error: 'Invalid quantity or price' });
@@ -34,7 +34,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// DELETE an order
+
 router.delete('/:id', async (req, res) => {
   try {
     await Order.findByIdAndDelete(req.params.id);

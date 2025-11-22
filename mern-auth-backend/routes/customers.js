@@ -1,13 +1,13 @@
 const router = require('express').Router();
 const Customer = require('../models/Customer');
 
-// Get all customers
+
 router.get('/', async (req, res) => {
   const customers = await Customer.find({});
   res.json(customers);
 });
 
-// Add a customer
+
 router.post('/', async (req, res) => {
   try {
     const customer = await Customer.create(req.body);
@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Update a customer
+
 router.put('/:id', async (req, res) => {
   try {
     const customer = await Customer.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -27,7 +27,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// Delete a customer
+
 router.delete('/:id', async (req, res) => {
   try {
     await Customer.findByIdAndDelete(req.params.id);
